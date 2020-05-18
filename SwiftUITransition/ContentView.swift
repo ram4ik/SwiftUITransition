@@ -9,8 +9,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var active: Bool = false
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Button(action: {
+                withAnimation {
+                    self.active.toggle()
+                }
+            }) {
+                Text("Slide this")
+            }
+            
+            if active {
+                Text("Slide In")
+                    .transition(.move(edge: .bottom))
+            }
+        }
     }
 }
 
